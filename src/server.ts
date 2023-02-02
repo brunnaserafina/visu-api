@@ -1,14 +1,9 @@
-import express from "express";
-import cors from "cors";
-import { loadEnv } from "./config/envs";
+import app, { init } from "@/app";
 
-loadEnv();
+const port = +process.env.PORT || 4001;
 
-const server = express();
-
-server
-  .use(cors())
-  .use(express())
-  .use("/status", (req, res) => res.send("OK!"));
-
-export default server;
+init().then(() => {
+  app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+  });
+});
