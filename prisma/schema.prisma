@@ -8,21 +8,19 @@ datasource db {
 }
 
 model accommodations {
-  id           Int      @id(map: "accommodations_pk") @default(autoincrement())
+  id           Int     @id(map: "accommodations_pk") @default(autoincrement())
   travel_id    Int
   type         String
   localization String
-  created_at   DateTime @db.Timestamp(6)
-  travels      travels  @relation(fields: [travel_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "accommodations_fk0")
+  travels      travels @relation(fields: [travel_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "accommodations_fk0")
 }
 
 model attractions {
-  id         Int      @id(map: "attractions_pk") @default(autoincrement())
-  travel_id  Int
+  id         Int     @id(map: "attractions_pk") @default(autoincrement())
+  travel_id  Int  
   name       String
   avaliation Int
-  created_at DateTime @default(dbgenerated("'2023-02-02 14:45:08.011175'::timestamp without time zone")) @db.Timestamp(6)
-  travels    travels  @relation(fields: [travel_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "attractions_fk0")
+  travels    travels @relation(fields: [travel_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "attractions_fk0")
 }
 
 model favorites {
@@ -41,21 +39,19 @@ model pictures {
 }
 
 model restaurants {
-  id         Int      @id(map: "restaurants_pk") @default(autoincrement())
+  id         Int     @id(map: "restaurants_pk") @default(autoincrement())
   travel_id  Int
   name       String
   avaliation Int
-  created_at DateTime @default(dbgenerated("'2023-02-02 14:45:08.011175'::timestamp without time zone")) @db.Timestamp(6)
-  travels    travels  @relation(fields: [travel_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "restaurants_fk0")
+  travels    travels @relation(fields: [travel_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "restaurants_fk0")
 }
 
 model sessions {
-  id         Int      @id(map: "sessions_pk") @default(autoincrement())
-  user_id    Int
-  token      String
-  active     Boolean  @default(true)
-  created_at DateTime @default(dbgenerated("'2023-02-02 14:45:08.011175'::timestamp without time zone")) @db.Timestamp(6)
-  users      users    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "sessions_fk0")
+  id      Int     @id(map: "sessions_pk") @default(autoincrement())
+  user_id Int
+  token   String
+  active  Boolean @default(true)
+  users   users   @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "sessions_fk0")
 }
 
 model travels {
@@ -68,7 +64,6 @@ model travels {
   spent            Int
   summary          String
   avaliation       Int
-  created_at       DateTime         @default(dbgenerated("'2023-02-02 14:45:08.011175'::timestamp without time zone")) @db.Timestamp(6)
   users            users            @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "travels_fk0")
   accommodations   accommodations[]
   attractions      attractions[]
@@ -78,12 +73,11 @@ model travels {
 }
 
 model users {
-  id         Int         @id(map: "users_pk") @default(autoincrement())
-  name       String
-  email      String
-  password   String
-  created_at DateTime    @default(dbgenerated("'2023-02-02 14:45:08.011175'::timestamp without time zone")) @db.Timestamp(6)
-  favorites  favorites[]
-  sessions   sessions[]
-  travels    travels[]
+  id        Int         @id(map: "users_pk") @default(autoincrement())
+  name      String
+  email     String
+  password  String
+  favorites favorites[]
+  sessions  sessions[]
+  travels   travels[]
 }

@@ -5,6 +5,7 @@ import cors from "cors";
 import { loadEnv, connectDb, disconnectDB } from "@/config";
 
 import { authenticationRouter } from "./routers/authentication-router";
+import { postTravelRouter } from "./routers/post-router";
 
 loadEnv();
 
@@ -14,7 +15,8 @@ app
   .use(cors())
   .use(express.json())
   .use("/status", (_req, res) => res.send("OK!"))
-  .use("/auth", authenticationRouter);
+  .use("/auth", authenticationRouter)
+  .use("/post-travel", postTravelRouter);
 
 export function init(): Promise<Express> {
   connectDb();
