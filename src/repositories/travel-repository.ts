@@ -24,8 +24,28 @@ async function create(
   });
 }
 
+async function findTravels() {
+  return prisma.travels.findMany({
+    select: {
+      id: true,
+      city_destination: true,
+      date_start: true,
+      date_end: true,
+      avaliation: true,
+      users: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+        },
+      },
+    },
+  });
+}
+
 const travelRepository = {
   create,
+  findTravels,
 };
 
 export default travelRepository;

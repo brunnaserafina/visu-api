@@ -1,10 +1,17 @@
 import { AuthenticatedRequest } from "@/middlewares/authentication-middleware";
 import { Response } from "express";
 import { PostTravelParams } from "@/schemas/post-schemas";
-import { newAccommodation, newAttractions, newPicture, newPost, newRestaurants } from "@/services/post-service";
+import {
+  getAllTravels,
+  newAccommodation,
+  newAttractions,
+  newPicture,
+  newPost,
+  newRestaurants,
+} from "@/services/post-service";
 import httpStatus from "http-status";
 
-export async function travelPost(req: AuthenticatedRequest, res: Response) {
+export async function postTravel(req: AuthenticatedRequest, res: Response) {
   const { userId } = req;
   const {
     cityOrigin,
@@ -28,7 +35,20 @@ export async function travelPost(req: AuthenticatedRequest, res: Response) {
     await newAccommodation(travel.id, accommodation);
     await newPicture(travel.id, picture);
 
-    return res.status(httpStatus.OK).send();
+    return res.status(httpStatus.CREATED).send();
+  } catch (error) {
+    console.log(error);
+    return res.status(httpStatus.BAD_REQUEST).send(error);
+  }
+}
+
+export async function getTravels(req: AuthenticatedRequest, res: Response) {
+  const { userId } = req;
+
+  try {
+    const travels = await getAllTravels();
+
+    return res.status(httpStatus.OK).send(travels);
   } catch (error) {
     console.log(error);
     return res.status(httpStatus.BAD_REQUEST).send(error);
