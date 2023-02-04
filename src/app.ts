@@ -6,6 +6,7 @@ import { loadEnv, connectDb, disconnectDB } from "@/config";
 
 import { authenticationRouter } from "./routers/authentication-router";
 import { postTravelRouter } from "./routers/post-router";
+import { historicRouter } from "./routers/historic-router";
 
 loadEnv();
 
@@ -16,7 +17,8 @@ app
   .use(express.json())
   .use("/status", (_req, res) => res.send("OK!"))
   .use("/auth", authenticationRouter)
-  .use("/post-travel", postTravelRouter);
+  .use("/post-travel", postTravelRouter)
+  .use("/historic", historicRouter);
 
 export function init(): Promise<Express> {
   connectDb();

@@ -43,9 +43,32 @@ async function findTravels() {
   });
 }
 
+async function findTravelsByUserId(userId: number) {
+  return prisma.travels.findMany({
+    where: {
+      user_id: userId,
+    },
+    select: {
+      id: true,
+      city_destination: true,
+      date_start: true,
+      date_end: true,
+      avaliation: true,
+      users: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+        },
+      },
+    },
+  });
+}
+
 const travelRepository = {
   create,
   findTravels,
+  findTravelsByUserId,
 };
 
 export default travelRepository;

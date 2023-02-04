@@ -42,15 +42,13 @@ export async function postTravel(req: AuthenticatedRequest, res: Response) {
   }
 }
 
-export async function getTravels(req: AuthenticatedRequest, res: Response) {
-  const { userId } = req;
-
+export async function getTravels(_req: AuthenticatedRequest, res: Response) {
   try {
     const travels = await getAllTravels();
 
     return res.status(httpStatus.OK).send(travels);
   } catch (error) {
     console.log(error);
-    return res.status(httpStatus.BAD_REQUEST).send(error);
+    return res.status(httpStatus.NOT_FOUND).send(error);
   }
 }
