@@ -8,6 +8,7 @@ import { authenticationRouter } from "./routers/authentication-router";
 import { postTravelRouter } from "./routers/post-router";
 import { historicRouter } from "./routers/historic-router";
 import { travelsRouter } from "./routers/travel-router";
+import { favoriteRouter } from "./routers/favorite-router";
 
 loadEnv();
 
@@ -20,7 +21,8 @@ app
   .use("/auth", authenticationRouter)
   .use("/post-travel", postTravelRouter)
   .use("/historic", historicRouter)
-  .use("/travels", travelsRouter);
+  .use("/travels", travelsRouter)
+  .use("/favorites", favoriteRouter);
 
 export function init(): Promise<Express> {
   connectDb();
