@@ -1,14 +1,7 @@
 import { AuthenticatedRequest } from "@/middlewares/authentication-middleware";
 import { Response } from "express";
 import { PostTravelParams } from "@/schemas/post-schemas";
-import {
-  getAllTravels,
-  newAccommodation,
-  newAttractions,
-  newPicture,
-  newPost,
-  newRestaurants,
-} from "@/services/post-service";
+import { newAccommodation, newAttractions, newPicture, newPost, newRestaurants } from "@/services/post-service";
 import httpStatus from "http-status";
 
 export async function postTravel(req: AuthenticatedRequest, res: Response) {
@@ -39,16 +32,5 @@ export async function postTravel(req: AuthenticatedRequest, res: Response) {
   } catch (error) {
     console.log(error);
     return res.status(httpStatus.BAD_REQUEST).send(error);
-  }
-}
-
-export async function getTravels(_req: AuthenticatedRequest, res: Response) {
-  try {
-    const travels = await getAllTravels();
-
-    return res.status(httpStatus.OK).send(travels);
-  } catch (error) {
-    console.log(error);
-    return res.status(httpStatus.NOT_FOUND).send(error);
   }
 }

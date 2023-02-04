@@ -49,8 +49,5 @@ export async function newPicture(travelId: number, picture: string): Promise<voi
   await picturesRepository.create(travelId, picture);
 }
 
-export async function getAllTravels() {
-  const travels = await travelRepository.findTravels();
 
-  return travels;
-}
+

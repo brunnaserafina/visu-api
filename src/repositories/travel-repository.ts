@@ -65,10 +65,52 @@ async function findTravelsByUserId(userId: number) {
   });
 }
 
+async function findTravelById(travelId: number) {
+  return prisma.travels.findUnique({
+    where: {
+      id: travelId,
+    },
+    select: {
+      id: true,
+      users: {
+        select: {
+          name: true,
+        },
+      },
+      city_origin: true,
+      city_destination: true,
+      date_start: true,
+      date_end: true,
+      spent: true,
+      summary: true,
+      avaliation: true,
+      accommodations: {
+        select: {
+          type: true,
+          localization: true,
+        },
+      },
+      restaurants: {
+        select: {
+          name: true,
+          avaliation: true,
+        },
+      },
+      attractions: {
+        select: {
+          name: true,
+          avaliation: true,
+        },
+      },
+    },
+  });
+}
+
 const travelRepository = {
   create,
   findTravels,
   findTravelsByUserId,
+  findTravelById,
 };
 
 export default travelRepository;
