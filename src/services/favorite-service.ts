@@ -10,6 +10,12 @@ export async function removeFavoriteByTravelId(userId: number, travelId: number)
   await favoritesRepository.deleteFavorite(favorite.id);
 }
 
+export async function getFavorite(userId: number, travelId: number) {
+  const favorite = await favoritesRepository.findFavorite(userId, travelId);
+
+  return favorite;
+}
+
 export async function getAllFavoritesByUserId(userId: number) {
   const favorites = await favoritesRepository.findManyFavorites(userId);
   return favorites;

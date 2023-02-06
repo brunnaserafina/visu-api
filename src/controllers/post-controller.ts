@@ -1,7 +1,13 @@
 import { AuthenticatedRequest } from "@/middlewares/authentication-middleware";
 import { Response } from "express";
 import { PostTravelParams } from "@/schemas/post-schemas";
-import { newAccommodation, newAttractions, newPicture, newPost, newRestaurants } from "@/services/post-service";
+import {
+  newAccommodation,
+  newAttractions,
+  newPicture,
+  newPost,
+  newRestaurants,
+} from "@/services/post-service";
 import httpStatus from "http-status";
 
 export async function postTravel(req: AuthenticatedRequest, res: Response) {
@@ -34,3 +40,5 @@ export async function postTravel(req: AuthenticatedRequest, res: Response) {
     return res.status(httpStatus.BAD_REQUEST).send(error);
   }
 }
+
+

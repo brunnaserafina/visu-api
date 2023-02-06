@@ -40,6 +40,9 @@ async function findTravels() {
         },
       },
     },
+    orderBy: {
+      date_start: "desc",
+    },
   });
 }
 
@@ -100,6 +103,11 @@ async function findTravelById(travelId: number) {
         select: {
           name: true,
           avaliation: true,
+        },
+      },
+      pictures: {
+        select: {
+          picture: true,
         },
       },
     },

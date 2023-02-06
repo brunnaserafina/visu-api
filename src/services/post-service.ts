@@ -48,6 +48,3 @@ export async function newAccommodation(travelId: number, accommodation: Accomoda
 export async function newPicture(travelId: number, picture: string): Promise<void> {
   await picturesRepository.create(travelId, picture);
 }
-
-
-

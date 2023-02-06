@@ -9,7 +9,7 @@ export async function getTravel(req: AuthenticatedRequest, res: Response) {
 
   try {
     const travel = await getTravelById(Number(travelId));
-    return res.status(httpStatus.OK).send(travel);
+    return res.status(httpStatus.OK).send([travel]);
   } catch (error) {
     console.log(error);
     return res.status(httpStatus.NOT_FOUND).send(error);
