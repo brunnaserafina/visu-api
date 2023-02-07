@@ -32,12 +32,6 @@ async function findManyFavorites(userId: number) {
       user_id: userId,
     },
     select: {
-      users: {
-        select: {
-          name: true,
-          email: true,
-        },
-      },
       travels: {
         select: {
           id: true,
@@ -45,6 +39,12 @@ async function findManyFavorites(userId: number) {
           date_start: true,
           date_end: true,
           avaliation: true,
+          users: {
+            select: {
+              name: true,
+              email: true,
+            },
+          },
         },
       },
     },
