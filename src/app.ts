@@ -20,8 +20,8 @@ app
   .use("/status", (_req, res) => res.send("OK!"))
   .use("/auth", authenticationRouter)
   .use("/post-travel", postTravelRouter)
-  .use("/historic", historicRouter)
   .use("/travels", travelsRouter)
+  .use("/historic", historicRouter)
   .use("/favorites", favoriteRouter);
 
 export function init(): Promise<Express> {

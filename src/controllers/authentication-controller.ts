@@ -3,10 +3,10 @@ import { Request, Response } from "express";
 import httpStatus from "http-status";
 
 export async function singInPost(req: Request, res: Response) {
-  const { name, email, idSession } = req.body;
+  const { name, email, password } = req.body;
 
   try {
-    const result = await authenticationService.signIn(name, email, idSession);
+    const result = await authenticationService.signIn(name, email, password);
 
     return res.status(httpStatus.OK).send(result);
   } catch (error) {

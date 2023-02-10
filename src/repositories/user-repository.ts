@@ -8,12 +8,12 @@ async function findByEmail(email: string) {
   });
 }
 
-async function create(name: string, email: string, idSession: string) {
+async function create(name: string, email: string, password: string) {
   return prisma.users.create({
     data: {
       name,
       email,
-      password: idSession,
+      password,
     },
   });
 }

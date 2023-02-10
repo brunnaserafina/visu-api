@@ -6,7 +6,6 @@ const prisma = new PrismaClient();
 async function main() {
   await cleanDb();
   await seedUsers();
-  await seedSessions();
   await seedTravels();
   await seedAccomodations();
   await seedRestaurants();
@@ -32,44 +31,25 @@ async function seedUsers() {
         id: 1,
         name: "Jeferson Serafina",
         email: "jeferson.serafina@gmail.com",
-        password: "123456",
+        password: faker.lorem.word(),
       },
       {
         id: 2,
         name: "Alexandre Hoffmann Júnior",
         email: "alexandre.hoffmann@gmail.com",
-        password: "123456",
+        password: faker.lorem.word(),
       },
       {
         id: 3,
         name: "Marlise Serafina",
         email: "marlise.serafina@gmail.com",
-        password: "123456",
+        password: faker.lorem.word(),
       },
       {
         id: 4,
         name: "Evelyn Albino",
         email: "evelyn.albino@gmail.com",
-        password: "123456",
-      },
-    ],
-  });
-}
-
-async function seedSessions() {
-  await prisma.sessions.createMany({
-    data: [
-      {
-        user_id: 1,
-        token: faker.datatype.uuid(),
-      },
-      {
-        user_id: 2,
-        token: faker.datatype.uuid(),
-      },
-      {
-        user_id: 3,
-        token: faker.datatype.uuid(),
+        password: faker.lorem.word(),
       },
     ],
   });

@@ -10,8 +10,17 @@ async function create(id: number, token: string) {
   });
 }
 
+async function find(userId: number) {
+  return prisma.sessions.findFirst({
+    where: {
+      user_id: userId,
+    },
+  });
+}
+
 const sessionRepository = {
   create,
+  find,
 };
 
 export default sessionRepository;
