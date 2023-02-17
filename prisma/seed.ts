@@ -68,7 +68,7 @@ async function seedTravels() {
         spent: 800,
         summary:
           "Viajar sozinha para Curitiba é muito tranquilo e gosto de recomendar como primeiro destino para quem é mais urbano e prefere atividades históricas. Curitiba tem muito verde também nos seus inúmeros parques espalhados pela cidade. A cidade é um dos meus destinos prediletos por ter várias opções do que fazer tanto no inverno, quanto no verão. Além de tudo, a gastronomia é incrível e o que não falta por lá são ótimas cervejas artesanais para conhecer.",
-        avaliation: 5,
+        avaliation: 4,
       },
       {
         id: 2,
@@ -92,7 +92,7 @@ async function seedTravels() {
         spent: 1000,
         summary:
           "Ruas floridas, friozinho e boa gastronomia, um local perfeito para viajar a dois. O que mais me surpreendeu nessa viagem foi a organização, limpeza e principalmente a natureza. Tem muito verde na cidade e eu estava sentindo falta disso depois do isolamento de quase dois anos.",
-        avaliation: 5,
+        avaliation: 4,
       },
       {
         id: 4,
