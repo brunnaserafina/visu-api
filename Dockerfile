@@ -1,15 +1,12 @@
-FROM node:16.17.0
+FROM node:15
 
 WORKDIR /usr/src
 
-COPY package.json .
+COPY . .
 
 EXPOSE 5000
 
 RUN npm i
-
-COPY . .
-
 RUN npx prisma generate
 
 RUN apt-get update && apt-get install -y wget
