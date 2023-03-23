@@ -28,25 +28,25 @@ async function seedUsers() {
   await prisma.users.createMany({
     data: [
       {
-        id: 1,
+        id: 10001,
         name: "Jeferson Serafina",
         email: "jeferson.serafina@gmail.com",
         password: faker.lorem.word(),
       },
       {
-        id: 2,
+        id: 10002,
         name: "Alexandre Hoffmann Júnior",
         email: "alexandre.hoffmann@gmail.com",
         password: faker.lorem.word(),
       },
       {
-        id: 3,
+        id: 10003,
         name: "Marlise Serafina",
         email: "marlise.serafina@gmail.com",
         password: faker.lorem.word(),
       },
       {
-        id: 4,
+        id: 10004,
         name: "Evelyn Albino",
         email: "evelyn.albino@gmail.com",
         password: faker.lorem.word(),
@@ -60,7 +60,7 @@ async function seedTravels() {
     data: [
       {
         id: 1,
-        user_id: 4,
+        user_id: 10004,
         city_origin: "Criciúma - SC",
         city_destination: "Curitiba - PR",
         date_start: new Date("2023-01-22T00:00:00Z"),
@@ -72,7 +72,7 @@ async function seedTravels() {
       },
       {
         id: 2,
-        user_id: 1,
+        user_id: 10001,
         city_origin: "Florianópolis - SC",
         city_destination: "Manaus - AM",
         date_start: new Date("2023-01-04T00:00:00Z"),
@@ -84,7 +84,7 @@ async function seedTravels() {
       },
       {
         id: 3,
-        user_id: 3,
+        user_id: 10003,
         city_origin: "Laguna - SC",
         city_destination: "Gramado - RS",
         date_start: new Date("2022-08-10T00:00:00Z"),
@@ -96,7 +96,7 @@ async function seedTravels() {
       },
       {
         id: 4,
-        user_id: 2,
+        user_id: 10002,
         city_origin: "Urussanga - SC",
         city_destination: "São Thomé das Letras - MG",
         date_start: new Date("2022-12-10T00:00:00Z"),
